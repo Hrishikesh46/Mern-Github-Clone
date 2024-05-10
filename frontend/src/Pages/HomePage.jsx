@@ -22,7 +22,7 @@ const HomePage = () => {
           `https://api.github.com/users/${username}`,
           {
             headers: {
-              authorization: `token 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`,
+              authorization: `token ${import.meta.env.VITE_GITHUB_API_KEY}`,
             },
           }
         );
@@ -31,9 +31,11 @@ const HomePage = () => {
 
         const repoRes = await fetch(userProfile.repos_url);
         const repos = await repoRes.json();
+
+        repos.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); // descending recent first (making it default)
         setRepos(repos);
-        console.log("user profile:", userProfile);
-        console.log("repos:", repos);
+        // console.log("user profile:", userProfile);
+        // console.log("repos:", repos);
         return { userProfile, repos };
       } catch (error) {
         toast.error(error.message);
@@ -58,6 +60,7 @@ const HomePage = () => {
     setUserProfile(userProfile);
     setRepos(repos);
     setLoading(false);
+    setSortType("recent");
   };
 
   const onSort = (sortType) => {
