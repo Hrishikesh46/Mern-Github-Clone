@@ -11,8 +11,11 @@ import Sidebar from "./Components/Sidebar";
 import { useAuthContext } from "./Context/AuthContext";
 
 function App() {
-  const { authUser } = useAuthContext();
+  const { authUser, loading } = useAuthContext();
   console.log("Authenticated user : ", authUser);
+
+  if (loading) return null;
+
   return (
     <div className="flex ">
       <Sidebar />
