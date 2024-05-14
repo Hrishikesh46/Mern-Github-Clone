@@ -28,7 +28,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "/api/auth/github/callback",
+      callbackURL: "http://localhost:5000/api/auth/github/callback",
     },
     async function (accessToken, refreshToken, profile, done) {
       console.log(profile);
@@ -46,10 +46,10 @@ passport.use(
           likedBy: [],
         });
         await newUser.save();
-        return done(null, newUser);
+        done(null, newUser);
       } else {
         //signin
-        return done(null, user);
+        done(null, user);
       }
     }
   )
