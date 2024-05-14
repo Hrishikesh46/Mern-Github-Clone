@@ -46,10 +46,10 @@ passport.use(
           likedBy: [],
         });
         await newUser.save();
-        done(null, newUser);
+        return done(null, newUser);
       } else {
         //signin
-        done(null, user);
+        return done(null, user);
       }
     }
   )
