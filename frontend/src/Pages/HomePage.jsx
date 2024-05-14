@@ -12,15 +12,12 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
 
   const [sortType, setSortType] = useState("recent");
-  const user = true;
 
   const getUserProfileAndRepos = useCallback(
     async (username = "hrishikesh46") => {
       setLoading(true);
       try {
-        const res = await fetch(
-          `http://localhost:5000/api/users/profile/${username}`
-        );
+        const res = await fetch(`/api/users/profile/${username}`);
 
         const { repos, userProfile } = await res.json();
 
@@ -49,7 +46,9 @@ const HomePage = () => {
     setLoading(true);
     setRepos([]);
     setUserProfile(null);
+
     const { userProfile, repos } = await getUserProfileAndRepos(username);
+
     setUserProfile(userProfile);
     setRepos(repos);
     setLoading(false);

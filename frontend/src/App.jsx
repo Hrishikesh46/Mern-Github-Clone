@@ -24,19 +24,19 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route
             path="/login"
-            element={!authUser ? <LoginPage /> : <Navigate to={"/"} />}
+            element={!authUser ? <LoginPage /> : <Navigate to="/" />}
           />
           <Route
             path="/signup"
-            element={!authUser ? <SignUpPage /> : <Navigate to={"/"} />}
+            element={!authUser ? <SignUpPage /> : <Navigate to="/" />}
           />
           <Route
             path="/explore"
-            element={authUser ? <ExplorePage /> : <Navigate to={"/login"} />}
+            element={authUser ? <ExplorePage /> : <Navigate to="/login" />}
           />
           <Route
             path="/likes"
-            element={authUser ? <LikesPage /> : <Navigate to={"/login"} />}
+            element={authUser ? <LikesPage /> : <Navigate to="/login" />}
           />
         </Routes>
         <Toaster />
