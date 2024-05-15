@@ -1,3 +1,6 @@
 export const handleLoginWithGithub = () => {
-  window.open("/api/auth/github", "_self");
+  window.open(
+    "https://mern-github-clone-4f5v.onrender.com/api/auth/github",
+    "_self"
+  );
 };
